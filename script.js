@@ -13,6 +13,10 @@ function Book(title, author, numPages, reading) {
     }
 }
 
+Book.prototype.toggleRead = function() {
+    this.reading = !this.reading
+}
+
 function addBookToLibrary(title, author, numPages, reading) {
     const book = new Book(title, author, numPages, reading)
     book.id = crypto.randomUUID()
@@ -52,6 +56,10 @@ function displayBooks() {
         const toggleReadingStatusButton = document.createElement("button")
         toggleReadingStatusButton.classList.add("change-read-status-btn")
         toggleReadingStatusButton.textContent = 'Toggle read status'
+        toggleReadingStatusButton.addEventListener("click", () => {
+            book.toggleRead()
+            displayBooks()
+        })
 
         const removeBookButton = document.createElement("button")
         removeBookButton.classList.add("remove-book-btn")
