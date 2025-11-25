@@ -23,7 +23,9 @@ function displayBooks() {
     const bookLibrary = document.querySelector(".book-display")
     bookLibrary.innerHTML = ''
 
-    for(const book of library) {
+    for(let i = 0; i < library.length; i++) {
+        const book = library[i];
+
         const bookTitle = document.createElement("div")
         bookTitle.classList.add("book-title")
         bookTitle.textContent = `${book.title}`
@@ -49,11 +51,15 @@ function displayBooks() {
 
         const toggleReadingStatusButton = document.createElement("button")
         toggleReadingStatusButton.classList.add("change-read-status-btn")
-        toggleReadingStatusButton.textContent = 'Change read status'
+        toggleReadingStatusButton.textContent = 'Toggle read status'
 
         const removeBookButton = document.createElement("button")
         removeBookButton.classList.add("remove-book-btn")
         removeBookButton.textContent = 'Remove'
+        removeBookButton.addEventListener("click", () => {
+            library.splice(0, 1)
+            displayBooks()
+        })
 
         cardButtons.appendChild(removeBookButton)
         cardButtons.appendChild(toggleReadingStatusButton)
@@ -106,9 +112,5 @@ addBookToLibrary("Harry Potter and the Order of the Phoenix", "J.K. Rowling", 87
 addBookToLibrary("The Hunger Games", "Suzanne Collins", 373, true)
 addBookToLibrary("Dracula", "Bram Stoker", 400, false)
 displayBooks()
-
-// 4 new book button to bring up a form allowing user to input details for new book and add to lib e.g. sidebar/ <dialog>
-
-// 5 add button on each book to remove book from library
 
 // 6 add button on each book to update red status
