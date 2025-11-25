@@ -110,13 +110,13 @@ button:hover {
     gap: 10px;
 }
 
-#book-title, #author, #num-pages {
+#book-title, #book-author, #book-num-pages {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-button[type='submit'] {
+.submit-btn {
     font-size: 1rem;
     padding: 6px 12px 6px 12px;
     border-radius: 10px;

@@ -20,6 +20,9 @@ function addBookToLibrary(title, author, numPages, reading) {
 }
 
 function displayBooks() {
+    const bookLibrary = document.querySelector(".book-display")
+    bookLibrary.innerHTML = ''
+
     for(const book of library) {
         const bookTitle = document.createElement("div")
         bookTitle.classList.add("book-title")
@@ -39,7 +42,7 @@ function displayBooks() {
         } else {
             bookReadStatus.style.color = "grey";
         }
-        bookReadStatus.textContent = `Status: ${book.reading ? 'Reading' : 'Not read'}`
+        bookReadStatus.textContent = `Status: ${book.reading ? 'Reading' : 'Not reading'}`
 
         const cardButtons = document.createElement("div")
         cardButtons.classList.add("card-btns")
@@ -72,10 +75,27 @@ const addBookButton = document.querySelector(".add-book-btn")
 addBookButton.addEventListener("click", () => {
     const sideBar = document.querySelector(".side-bar")
     if(sideBar.style.display === "none") {
-        sideBar.style.display = "block";
+        sideBar.style.display = "block"
     } else {
-        sideBar.style.display = "none";
+        sideBar.style.display = "none"
     }
+})
+
+const submitButton = document.querySelector(".submit-btn")
+submitButton.addEventListener("click", () => {
+    const form = document.getElementById("add-book-form");
+    if (!form.reportValidity()) {
+        return
+    }
+
+    const bookTitle = document.querySelector('#book-title').value
+    const bookAuthor = document.querySelector('#book-author').value
+    const bookNumPages = document.querySelector('#book-num-pages').value
+    const bookReadingStatus = document.querySelector('#book-reading-status').checked
+
+    addBookToLibrary(bookTitle, bookAuthor, bookNumPages, bookReadingStatus)
+    displayBooks()
+    event.preventDefault()
 })
 
 addBookToLibrary("Cryptonomicon", "Neal Stephenson", 1168, true)
