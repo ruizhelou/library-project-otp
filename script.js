@@ -70,7 +70,12 @@ function displayBooks() {
 
 const addBookButton = document.querySelector(".add-book-btn")
 addBookButton.addEventListener("click", () => {
-    console.log('hello')
+    const sideBar = document.querySelector(".side-bar")
+    if(sideBar.style.display === "none") {
+        sideBar.style.display = "block";
+    } else {
+        sideBar.style.display = "none";
+    }
 })
 
 addBookToLibrary("Cryptonomicon", "Neal Stephenson", 1168, true)
@@ -78,6 +83,8 @@ addBookToLibrary("The Stand", "Stephen King", 1153, false)
 addBookToLibrary("The Way of Kings", "Brandon Sanderson", 1007, false)
 addBookToLibrary("The Brothers Karamazov", "Fyodor Dostoyevsky", 924, true)
 addBookToLibrary("Harry Potter and the Order of the Phoenix", "J.K. Rowling", 870, true)
+addBookToLibrary("The Hunger Games", "Suzanne Collins", 373, true)
+addBookToLibrary("Dracula", "Bram Stoker", 400, false)
 displayBooks()
 
 // 4 new book button to bring up a form allowing user to input details for new book and add to lib e.g. sidebar/ <dialog>

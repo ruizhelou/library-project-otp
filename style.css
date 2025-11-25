@@ -9,6 +9,10 @@
     border-width: 1px; */
 }
 
+body {
+    display: flex;
+}
+
 .container {
     margin: 40px;
     
@@ -53,9 +57,6 @@
     width: 300px;
     padding: 20px;
     border-radius: 25px;
-
-    /* border-style: solid;
-    border-width: 1px; */
     box-shadow: 2px 0px 10px lightgray;
 }
 
@@ -93,4 +94,36 @@
 button:hover {
     cursor:pointer;
     opacity: 0.5;
+}
+
+.side-bar {
+    margin: 40px 20px 40px 0px;
+    padding: 20px;
+
+    border-radius: 25px;
+    box-shadow: 2px 0px 10px lightgray;
+}
+
+#add-book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#book-title, #author, #num-pages {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+button[type='submit'] {
+    font-size: 1rem;
+    padding: 6px 12px 6px 12px;
+    border-radius: 10px;
+    border-style: none;
+}
+
+input[type="text"], input[type="number"] {
+    padding: 5px;
+    font-size: 1rem;
 }
