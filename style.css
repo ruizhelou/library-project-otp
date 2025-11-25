@@ -17,15 +17,27 @@
     gap: 40px;
 }
 
-.title {
+.header {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+
     font-size: 3rem;
     padding: 10px;
+    gap: 20px;
 
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: black;
+}
+
+.add-book-btn {
+    border-radius: 25px;
+    font-size: 1.5rem;
+    padding: 6px 18px 6px 18px;
+    border-style: none;
+    background-color: lightseagreen;
+    color: white;
 }
 
 .book-display {
@@ -76,4 +88,9 @@
     border-radius: 10px;
     padding: 6px 12px 6px 12px;
     border-style: none;
+}
+
+button:hover {
+    cursor:pointer;
+    opacity: 0.5;
 }
