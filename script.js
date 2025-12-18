@@ -65,7 +65,7 @@ function displayBooks() {
         removeBookButton.classList.add("remove-book-btn")
         removeBookButton.textContent = 'Remove'
         removeBookButton.addEventListener("click", () => {
-            library.splice(0, 1)
+            library.splice(i, 1)
             displayBooks()
         })
 
@@ -102,7 +102,6 @@ const bookNumPages = document.querySelector('#book-num-pages')
 function displayBookTitleValidity() {
     if(bookTitle.validity.valueMissing) {
         bookTitle.setCustomValidity("Your book needs a title!")
-        return
     } else {
         bookTitle.setCustomValidity("")
     }
@@ -110,7 +109,6 @@ function displayBookTitleValidity() {
 function displayBookAuthorValidity() {
     if(bookAuthor.validity.valueMissing) {
         bookAuthor.setCustomValidity("Your book needs a title!")
-        return
     } else {
         bookAuthor.setCustomValidity("")
     }
@@ -118,7 +116,6 @@ function displayBookAuthorValidity() {
 function displayBookNumPagesValidity() {
     if(bookNumPages.validity.valueMissing) {
         bookNumPages.setCustomValidity("Your book needs a title!")
-        return
     } else {
         bookNumPages.setCustomValidity("")
     }
