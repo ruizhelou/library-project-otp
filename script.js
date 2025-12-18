@@ -95,21 +95,56 @@ addBookButton.addEventListener("click", () => {
     }
 })
 
+const bookTitle = document.querySelector('#book-title')
+const bookAuthor = document.querySelector('#book-author')
+const bookNumPages = document.querySelector('#book-num-pages')
+
+function displayBookTitleValidity() {
+    if(bookTitle.validity.valueMissing) {
+        bookTitle.setCustomValidity("Your book needs a title!")
+        return
+    } else {
+        bookTitle.setCustomValidity("")
+    }
+}
+function displayBookAuthorValidity() {
+    if(bookAuthor.validity.valueMissing) {
+        bookAuthor.setCustomValidity("Your book needs a title!")
+        return
+    } else {
+        bookAuthor.setCustomValidity("")
+    }
+}
+function displayBookNumPagesValidity() {
+    if(bookNumPages.validity.valueMissing) {
+        bookNumPages.setCustomValidity("Your book needs a title!")
+        return
+    } else {
+        bookNumPages.setCustomValidity("")
+    }
+}
+
+bookTitle.addEventListener("input", event => displayBookTitleValidity())
+bookAuthor.addEventListener("input", event => displayBookAuthorValidity())
+bookNumPages.addEventListener("input", event => displayBookNumPagesValidity())
+
 const submitButton = document.querySelector(".submit-btn")
 submitButton.addEventListener("click", () => {
-    const form = document.getElementById("add-book-form");
-    if (!form.reportValidity()) {
-        return
+    const form = document.querySelector('#add-book-form')
+    const bookTitle = document.querySelector('#book-title')
+    const bookAuthor = document.querySelector('#book-author')
+    const bookNumPages = document.querySelector('#book-num-pages')
+    const bookReadingStatus = document.querySelector('#book-reading-status')
+
+    displayBookTitleValidity()
+    displayBookAuthorValidity()
+    displayBookNumPagesValidity()
+
+    if(form.checkValidity()) {
+        addBookToLibrary(bookTitle.value, bookAuthor.value, bookNumPages.value, bookReadingStatus.checked)
+        displayBooks()
+        event.preventDefault()
     }
-
-    const bookTitle = document.querySelector('#book-title').value
-    const bookAuthor = document.querySelector('#book-author').value
-    const bookNumPages = document.querySelector('#book-num-pages').value
-    const bookReadingStatus = document.querySelector('#book-reading-status').checked
-
-    addBookToLibrary(bookTitle, bookAuthor, bookNumPages, bookReadingStatus)
-    displayBooks()
-    event.preventDefault()
 })
 
 addBookToLibrary("Cryptonomicon", "Neal Stephenson", 1168, true)
